@@ -1,5 +1,6 @@
 import 'dotenv/config';
 import { createServer } from './server';
+import { isAuthRequired } from './middleware/keyStore';
 
 const PORT = parseInt(process.env.PORT || '3000', 10);
 
@@ -10,7 +11,7 @@ const server = app.listen(PORT, () => {
   console.log(`   Chat:        POST http://localhost:${PORT}/v1/chat/completions`);
   console.log(`   Health:      GET  http://localhost:${PORT}/health`);
   console.log(`\n   Default provider: ${process.env.DEFAULT_PROVIDER || 'claude'}`);
-  console.log(`   Auth:             ${process.env.API_KEY ? 'enabled' : 'disabled (set API_KEY to enable)'}\n`);
+  console.log(`   Auth:             ${isAuthRequired() ? 'enabled (CSV / API_KEY)' : 'disabled'}\n`);
 });
 
 process.on('SIGTERM', () => {

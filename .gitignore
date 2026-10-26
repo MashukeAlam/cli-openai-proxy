@@ -1,4 +1,6 @@
 node_modules/
 dist/
 .env
+api_keys.csv
 *.js.map
+
