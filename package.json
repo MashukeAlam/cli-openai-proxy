@@ -1,0 +1,25 @@
+{
+  "name": "cli-openai-proxy",
+  "version": "1.0.0",
+  "description": "OpenAI-compatible API proxy for CLI tools (agy, codex, claude)",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "node dist/index.js",
+    "dev": "nodemon --exec tsx src/index.ts",
+    "build": "tsc",
+    "lint": "tsc --noEmit"
+  },
+  "author": "MashukeAlam <jimmashuke@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.0.0",
+    "nodemon": "^3.1.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.5.0"
+  }
+}
