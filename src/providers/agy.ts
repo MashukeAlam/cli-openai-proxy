@@ -11,7 +11,8 @@ export class AgyProvider extends BaseProvider {
   async complete(messages: ChatMessage[], _model: string): Promise<string> {
     const prompt = this.formatMessages(messages);
     return new Promise((resolve, reject) => {
-      const proc = spawn('agy', [prompt], { shell: true });
+      // Use shell:false and pass prompt as a distinct argument so spaces are preserved
+      const proc = spawn('agy', ['--print', prompt], { shell: false });
       let output = '';
       let errOutput = '';
 
@@ -48,7 +49,7 @@ export class AgyProvider extends BaseProvider {
   async stream(messages: ChatMessage[], _model: string, output: Writable): Promise<void> {
     const prompt = this.formatMessages(messages);
     return new Promise((resolve, reject) => {
-      const proc = spawn('agy', [prompt], { shell: true });
+      const proc = spawn('agy', ['--print', prompt], { shell: false });
 
       const timer = setTimeout(() => {
         proc.kill();
